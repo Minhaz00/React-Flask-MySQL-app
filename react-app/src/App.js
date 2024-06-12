@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -30,25 +31,29 @@ function App() {
       .catch(error => console.error(error));
   };
 
-  return (
-    <div>
-      <h1>CRUD App</h1>
-      <input
-        type="text"
-        placeholder="Name"
-        value={newItem.name}
-        onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={newItem.description}
-        onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-      />
-      <button onClick={addItem}>Add Item</button>
-      <ul>
+   return (
+    <div className="app-container">
+      <h1>React CRUD Application</h1>
+
+      <div className="form-container">
+        <input
+          type="text"
+          placeholder="Name"
+          value={newItem.name}
+          onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={newItem.description}
+          onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
+        />
+        <button onClick={addItem} disabled={!newItem.name || !newItem.description}>Add User</button>
+      </div>
+
+      <ul className="item-list">
         {items.map(item => (
-          <li key={item.id}>
+          <li key={item.id} className="item-card">
             <input
               type="text"
               value={item.name}
@@ -59,13 +64,17 @@ function App() {
               value={item.description}
               onChange={(e) => setItems(items.map(i => i.id === item.id ? { ...i, description: e.target.value } : i))}
             />
-            <button onClick={() => updateItem(item.id)}>Update</button>
-            <button onClick={() => deleteItem(item.id)}>Delete</button>
+            <div className="button-group">
+              <button onClick={() => updateItem(item.id)}>Update</button>
+              <button onClick={() => deleteItem(item.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
+
     </div>
   );
+
 }
 
 export default App;
