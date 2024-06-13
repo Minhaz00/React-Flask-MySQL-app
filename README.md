@@ -1,7 +1,7 @@
 
 # React-Flask-MySQL App with Nginx Proxy Server
 
-![alt text](<WhatsApp Image 2024-06-12 at 23.58.15_05236b57.jpg>)
+![alt text](<./readme-images/image1.jpg>)
 
 ## Project Setup
 
@@ -76,7 +76,7 @@ http {
 
 ## Testing and Deployment
 
-![alt text](<WhatsApp Image 2024-06-13 at 00.02.43_15076285.jpg>)
+![alt text](<./readme-images/image2.jpg>)
 
 * Start your services (React in development mode, Flask, and Nginx).
 * Access your application URL in the browser (e.g., `http://localhost`). You should see your React app rendered.
